@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Yousef Sayes - NJIT
+
 import sys
 import csv
 from collections import Counter
