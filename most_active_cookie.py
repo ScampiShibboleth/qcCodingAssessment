@@ -12,9 +12,15 @@ if __name__ == "__main__":
         date = sys.argv[3]
         with open(sys.argv[1]) as cookieFile:
             cookies = csv.reader(cookieFile)
-            
+
+            inDate = False #abuse the fact that the csv is sorted 
+
             for i, row in enumerate(cookies):
-                if i > 0 and row[1][:10] == date:
+                if inDate and row[1][:10] != date:
+                    break
+                    
+                if inDate or (i > 0 and row[1][:10] == date):
+                    inDate = True
                     cookieCount[row[0]] += 1
                     if cookieCount[row[0]] == maxCookieCount:
                         topCookies.append(row[0])
